@@ -1,106 +1,108 @@
-//General Styling
+// Universal Styles
 * {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-}
 
-//Navigation
+
+// Navigation
 nav {
   position: fixed;
-  height: 5%;
-  background: #424242;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
   ul {
     list-style: none;
-    margin: 0;
   }
   li {
     display: inline;
   }
   a {
-    text-decoration: none;
     color: #fff;
+    text-decoration: none;
     :hover {
       color: #ddd;
     }
-    :visited {
-      color: #fff;
-    }
   }
 }
 
-//Header
-header {
-  display: block;
+// Header
+#main-header {
   height: 100vh;
-  background: url('http://www.fresnostate.edu/academics/oced/images/skyline_735x290.png') no-repeat center center fixed;
+  text-align: center;
+  //background from css-tricks.com
+  background: url(./img/background.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
-  h1, h2 {
-    background: #424242;
-    color: #fff;
-    text-align: center;
-    padding-right: 1em;
-    margin: auto;
-  }
+  background-size: cover;
+  //end background
   h1 {
-    font-size: 3em;
-
+    margin: 0;
+    font-size: 4em;
   }
   h2 {
     font-size: 2em;
-    margin-top: 1em;
   }
-}
-
-//About
-#about {
-  min-height: 100%;
-  padding: .5em;
+  h1, h2 {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+  }
   border-bottom: 1px dotted #000;
 }
 
-//Portfolio
-#portfolio {
-  min-height: 100%;
-  padding: .5em;
+header {
+  padding-top: 30vh;
 }
 
-//Footer
-footer {
-  background: #424242;
-  padding: .5em 0;
-  ul {
-    list-style: none;
-    margin: 0;
-  }
+// About Me
+#about {
+  height: 100vh;
+  border-bottom: 1px dotted #000; 
   h3 {
-    margin: 0 0 .5em 0;
+    text-align: center;
   }
-  h3, ul {
-    padding-left: 65%;
+  img {
+    height: 350px;
+    width: 300px;
+    background: tomato;
+    float: left;
+    margin: 1em;
   }
-  h3, a {
+  p {
+    padding: 1em;
+  }
+}
+
+// Portfolio
+#portfolio  {
+  height: 100vh;
+  h3 {
+    text-align: center;
+  }
+}
+
+// Footer
+footer {
+  background: #000;
+  position: absolute;
+  width: 100%;
+  h3 {
     color: #fff;
   }
+  ul {
+    list-style: none;
+  }
   a {
+    color: #fff;
     text-decoration: none;
+    :hover {
+      color: #ddd;
+    }
+  }
+  h3, ul {
+    padding-left: 50%;
   }
 }
 
-//Special Overrides
-.back-to-top {
-  text-decoration: underline;
-  color: #00f;
-  :hover {
-    color: tomato;
-  }
-  :visited {
-    color: #00f;
-  }
-}
+
+
