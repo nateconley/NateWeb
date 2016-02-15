@@ -2,19 +2,24 @@
 <html>
 <head>
   <title>Nate Conley | Web Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.3/normalize.css">
   <link rel="stylesheet" href="../css/skeleton.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="container">
+<body>
+<div class="container">
+<nav>
+	<ul>
+</nav>
 
 <header>
 	<h1>Nate Conley</h1>
 	<h2>Fresno-based Web Developer</h2>
 </header>
 
-<main>
+<main class="row about-me">
 	<h3>About Me</h3>
 	<p>Hi, I'm Nate. I am a web developer calling Fresno, California my home. I am very interesting in web technology and building things that are user-friendly. I am originally from Missouri.</p>
 	<h4>Web Developer</h4>
@@ -23,15 +28,30 @@
 	<p>I am very excited about the future of the web and I am excited to know that I will be a part of it in some way.</p>
 
 	<h4>Musician</h4>
-	<p>I graduated from <a href="http://www.mssu.edu">Missouri Southern State University</a> in 2015 with a Bachelor of General Stuides and a minor in music. I have had amazing experiences in my time at MSSU, including performing on the professional drumline for the Kansas City Royals of the MLB. I performed at the All-Star Game in 2012, the Post Seasons of 2014 and 2015, performances in Europe and participating in the 2015 World Series victory parade. I also have experience teaching percussion for the Carl Junction, Missouri High School Marching Band for the 2014 and 2015 seasons.</p>
+	<p>I graduated from <a href="http://www.mssu.edu">Missouri Southern State University</a> in 2015 with a Bachelor of General Studies and a minor in music. I have had amazing experiences in my time at MSSU, including performing on the professional drumline for the Kansas City Royals of the MLB. I performed at the All-Star Game in 2012, the Post Seasons of 2014 and 2015, performances in Europe and participating in the 2015 World Series victory parade. I also have experience teaching percussion for the Carl Junction, Missouri High School Marching Band for the 2014 and 2015 seasons.</p>
 </main>
 
-<div class="row">
-
+<div class="row work">
+	<h3>Work</h3>
 </div>
 
+<div class="row contact-me">
+	<h3>Contact Me</h3>
+	<form method="post">
+		<label for="email-address">Email</label>
+		<input type="text" id="email-address" />
+
+		<label for="message-text">Message</label>
+		<textarea class="u-full-width" id="message-text"></textarea>
+
+		<input class="button" type="submit" value="submit" />
+	</form>
+
+
+</div>
+</div>
 <footer>
-	
+	<p>&copy; 2016 Nathan Conley</p>	
 </footer>
 
 </body>
