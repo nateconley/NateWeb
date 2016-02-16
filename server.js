@@ -1,17 +1,3 @@
-// var http = require('http');
-// var fs = require('fs');
-
-// var index = fs.readFileSync('./html/index.html');
-
-// var server = http.createServer(function(request, response){
-// 	response.writeHead(200, {'Content-type': 'text/html'});
-// 	response.write(index);
-// 	response.end();
-// });
-
-// server.listen(3000, function(){
-// 	console.log("server running on port 3000");
-// })
 'use strict';
 
 var express = require('express'),
@@ -19,8 +5,11 @@ var express = require('express'),
 
 var app = express();
 
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/templates');
+
 app.get('/', function(req, res){
-	res.send("<h1>Hello World!</h1>");
+	res.render('index');
 });
 
 app.listen(3000, function(){
