@@ -21,9 +21,9 @@ block content
 				a(href="http://localhost:3000/beatles") #[img(src="", alt="Beatles Quote Generator")]
 	.row#contact-me
 		h3 Contact Me
-		form(method="post")
-			label(for="email-address") Email
-			input(type="text", id="email-address", placeholder="email@example.com")
+		form(method="post", action="contact")
+			label(for="email") Email
+			input(type="text", id="email", name="email", placeholder="email@example.com")
 			label(for="message-text") Message
-			textarea.u-full-width(id="message-text")
+			textarea.u-full-width(name="message" id="message-text")
 			input.button(type="submit", value="submit")

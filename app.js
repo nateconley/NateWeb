@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var routes = require('./routes')
 
 var app = express();
 
@@ -10,18 +11,17 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
 // Home route
-app.get('/', function(req, res){
-	res.render('index');
-});
+app.get('/', routes.index);
 
 // Beatles route
-app.get('/beatles', function(req, res){
-	res.sendFile(__dirname + '/public/html/beatles.html');
-});
+app.get('/beatles', routes.beatles);
 
 // Weather route
-app.get('/weather', function(req, res){
-	
+app.get('/weather', routes.weather);
+
+// contact form
+app.post('/contact', function(req,res){
+	console.log();
 });
 
 // 404 error
