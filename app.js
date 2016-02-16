@@ -1,9 +1,10 @@
 'use strict';
 
-var express = require('express'),
-			   fs = require('fs');
+var express = require('express');
 
 var app = express();
+
+app.use('/static', express.static(__dirname + '/public'));
 
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
