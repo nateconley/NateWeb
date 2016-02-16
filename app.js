@@ -1,9 +1,15 @@
 'use strict';
 
 var express = require('express');
-var routes = require('./routes')
+var bodyParser = require('body-parser');
+var routes = require('./routes');
+var mailer = require('./mailer');
 
 var app = express();
+
+// Accesses post body data
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/static', express.static(__dirname + '/public'));
 
@@ -20,9 +26,7 @@ app.get('/beatles', routes.beatles);
 app.get('/weather', routes.weather);
 
 // contact form
-app.post('/contact', function(req,res){
-	console.log();
-});
+app.post('/contact', mailer.contact);
 
 // 404 error
 
