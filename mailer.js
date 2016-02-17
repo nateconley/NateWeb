@@ -20,11 +20,13 @@ var contact = function (req, res) {
 	      text: message
 	  };
 
-	  smtpTrans.sendMail(mailOptions, function (error, res){
+	  smtpTrans.sendMail(mailOptions, function (error, response){
 	  	if(error) {
 	  		console.log("there was an error!");
+	  		res.render('contact', { error: true });
 	  	} else {
 	  		console.log("email successfully sent!");
+	  		res.render('contact', { error: false })
 	  	}
 	  });
   
