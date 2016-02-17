@@ -1,4 +1,12 @@
 // General stylings
+html {
+
+}
+
+.container {
+
+}
+
 header,
 #about-me,
 #work {
@@ -29,17 +37,34 @@ header {
 nav {
 	ul {
 		list-style: none;
+		width: 100%;
+		border-bottom: 2px solid #000;
+		height: 30px;
+		margin: 0;
 		a {
 			text-decoration: none;
+			color: #000;
 		}
 		li {
-			display: inline;
-			background: #ccc;
+			display: block;
 			text-align: center;
-			a {
-				color: #000;
+			position: relative;
+			&:nth-child(1n+2) {
+				border-left: 1px solid #000;
+			}
+			&:first-child {
+				font-weight: bold;
 			}
 		}
+	}
+}
+
+@media (max-width: 549px) {
+	nav ul li:nth-child(1n+2) {
+		border-bottom: 1px solid #555;
+	}
+	nav ul li {
+		height: 30px;
 	}
 }
 
@@ -54,8 +79,7 @@ nav {
 				height: 20em;
 				width: 20em;
 				border: 2px solid #000;
-				border-radius: 5px;
-			}
+				border-radius: 5px;			}
 		}
 	}
 }
@@ -83,7 +107,10 @@ footer {
 				color: #4183c4;
 				vertical-align: middle;
 			}
-			
+			&:nth-child(4) i {
+				color: #0077b5;
+				vertical-align: middle;
+			}
 		}
 	}
 }

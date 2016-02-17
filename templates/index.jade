@@ -16,14 +16,14 @@ block content
 		h3 Work
 		ul.row
 			li.six.columns
-				a(href="http://localhost:3000/weather") #[img(src="", alt="Local Weather App")]
+				a.work-gallery-item(href="http://localhost:3000/weather") #[img(src="", alt="Local Weather App")]
 			li.six.columns
-				a(href="http://localhost:3000/beatles") #[img(src="", alt="Beatles Quote Generator")]
+				a.work-gallery-item(href="http://localhost:3000/beatles") #[img(src="", alt="Beatles Quote Generator")]
 	.row#contact-me
 		h3 Contact Me
 		form(method="post", action="contact")
 			label(for="email") Email
-			input(type="text", id="email", name="email", placeholder="email@example.com")
+			input(type="email", id="email", name="email", placeholder="email@example.com", required=true)
 			label(for="message-text") Message
-			textarea.u-full-width(name="message" id="message-text")
+			textarea.u-full-width(name="message" id="message-text", required=true)
 			input.button(type="submit", value="submit")
