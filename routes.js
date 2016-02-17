@@ -9,9 +9,9 @@ var beatles = function(req, res){
 };
 
 // Weather route
-var weather = function(req, res){
-	res.send("future home of LocalWeatherApp");
-};
+var weather = function(req, res) {
+	res.render('weather');
+}
 
 module.exports.index = index;
 module.exports.beatles = beatles;

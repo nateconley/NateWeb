@@ -1,0 +1,18 @@
+.container {
+  margin-top: 1em; }
+
+.jumbotron {
+  text-align: center; }
+
+.weather-info {
+  border: 2px solid #000;
+  border-radius: 5px; }
+
+.search {
+  padding: 1em; }
+
+.display-weather,
+.loading {
+  padding-bottom: 1em; }
+
+/*# sourceMappingURL=weather.css.map */

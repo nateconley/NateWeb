@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var routes = require('./routes');
 var mailer = require('./mailer');
+var weatherApi = require('./weatherApi');
 
 var app = express();
 
@@ -27,6 +28,14 @@ app.get('/weather', routes.weather);
 
 // contact form
 app.post('/contact', mailer.contact);
+
+// Weather routes
+app.get('/weather', routes.weather);
+
+// Weather post request
+app.post('/weather', function(req, res){
+	weatherApi.apiCall(req.body, res);
+});
 
 // 404 error
 

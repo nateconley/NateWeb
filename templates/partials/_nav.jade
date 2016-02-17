@@ -1,6 +1,13 @@
 nav.row
-	ul
-		li.three.columns #[a(href="#") Nate Conley]
-		li.three.columns #[a(href="#about-me") About]
-		li.three.columns #[a(href="#work") Work]
-		li.three.columns #[a(href="#contact-me") Contact]
+	if path === '/'
+		ul
+			li.three.columns #[a(href="#") Nate Conley]
+			li.three.columns #[a(href="#about-me") About]
+			li.three.columns #[a(href="#work") Work]
+			li.three.columns #[a(href="#contact-me") Contact]
+	else
+		ul
+			li.three.columns #[a(href="http://localhost:3000") Nate Conley]
+			li.three.columns #[a(href="http://localhost:3000#about-me") About]
+			li.three.columns #[a(href="http://localhost:3000#work") Work]
+			li.three.columns #[a(href="http://localhost:3000#contact-me") Contact]

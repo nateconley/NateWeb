@@ -88,6 +88,13 @@ nav {
 	}
 }
 
+// Contact
+#contact-me {
+	p {
+		text-align: center;
+	}
+}
+
 // Footer
 footer {
 	text-align: center;
@@ -126,7 +133,9 @@ footer {
 		width: 100%;
 		margin-left: 0;
 	}
-
+	header .header-text {
+		text-align: center;
+	}
 	header .header-image {
 		margin-top: 0;
 		margin-bottom: 1em;
