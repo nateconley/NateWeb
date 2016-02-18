@@ -6,8 +6,8 @@ var contact = function(req, res) {
 	var smtpTrans = nodemailer.createTransport(smtpTransport({
 	    service: 'Gmail',
 	    auth: {
-	        user: "me@gmail.com",
-	        pass: "application-specific-password" 
+	        user: "email@gmail.com",
+	        pass: "password" 
 	      }
 	    }
     ));
@@ -17,19 +17,17 @@ var contact = function(req, res) {
 	    from: 'nateconley123@gmail.com', // sender address 
 	    to: 'nateconley123@gmail.com', // the same mail = want to send it to myself
 	    subject: 'Website Contact Form', // Subject line 
-	    html: '<h2>' + req.body.email + '</h2><br><p>' + req.body.message + '</p>' // html body 
+	    html: '<h2>Mail from: ' + req.body.email + '</h2><br><p>' + req.body.message + '</p>' // html body 
 	};
 
 
 
 	smtpTrans.sendMail(mailOptions, function(error, info){
 	  if(error){
-	  	console.log(error);
 	    res.render('contact', { error: true });
 	    return;
 	  }
 	  // Success
-	  console.log('Message sent: ' + info.response);
 	  res.render('contact', { error: false });
 	});
 }

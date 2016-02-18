@@ -1,34 +1,42 @@
-extends ./layout.jade
-block content
-	header.row
-		.header-text.seven.columns
-			h1 Nate Conley
-			h2 Fresno based Front-End Web Developer
-		.header-image.five.columns
-			img.u-max-full-width(src="./static/img/headshot.jpg", alt="Picture of Nate Conley")
-	main.row#about-me
-		h3.section-header About Me
-		p Hi, I'm Nate. I am a web developer calling Fresno, California my home. I am very interested in web technology and building things that are user-friendly. I am originally from Missouri.
-		h4 Web Developer
-		p I am familiar with front end technologies like HTML, CSS, JavaScript, and jQuery. I am constantly learning, and I will always be evolving my skills. I began learning about web development while I was attending college as a Music Industry major. It was in my Programming and Website Administration classes that I decided that I wanted to become a web developer. I started learning with online resourced like #[a(href="https://www.teamtreehouse.com", target="_blank") Treehouse], #[a(href="http://www.codecademy.com", target="_blank") Codecademy], and #[a(href="http://www.freecodecamp.com", target="_blank") freeCodeCamp]. I never looked back!
-		p Of course, feel free to check out my source code on #[a(href="http://www.github.com/nateconley") GitHub]
-		h4 Musician
-		p I graduated from #[a(href="http://www.mssu.edu", target="_blank") Missouri Southern State University] in 2015 with a Bachelor of General Studies and a minor in music. I have had amazing experiences in my time at MSSU, including performing on the professional drumline for the Kansas City Royals. I performed at the All-Star Game in 2012, the Post Seasons of 2014 and 2015, performances in Europe and participating in the 2015 World Series victory parade. I also have experience teaching percussion for the Carl Junction, Missouri High School Marching Band for the 2014 and 2015 seasons.
-	div#work
-		h3.section-header Work
-		ul.row
-			li.six.columns
-				a.work-gallery-item(href="http://www.nateconley.com/weather") #[img(src="./static/img/weather-thumbnail.jpg", alt="Local Weather App")]
-			li.six.columns
-				a.work-gallery-item(href="http://www.nateconley.com/beatles") #[img(src="./static/img/beatles-thumbnail.jpg", alt="Beatles Quote Generator")]
-	.row#contact-me
-		h3.section-header Contact Me
-		h4 This form is currently awaiting verification with the service provider!
-		h5 email me here: #[a(href="mailto:nateconley123@gmail.com") nateconley123@gmail.com]
-		form(method="post", action="contact")
-			label(for="email") Email
-			input(type="email", id="email", name="email", placeholder="email@example.com", required=true)
-			label(for="message-text") Message
-			textarea.u-full-width(name="message" id="message-text", required=true)
-			input.button(type="submit", value="submit" disabled)
-			p Alternatively, here is my email address: #[a(href="mailto:nateconley123@gmail.com") nateconley123@gmail.com]
+doctype html
+html
+	include ./partials/_weather_head.jade
+	body.container(ng-app="weatherApp")
+		.jumbotron
+			h1 LocalWeatherApp
+			h2 #[a(href="http://localhost:3000/") Back to nateconley.com]
+		.weather-info.col-sm-4.col-sm-offset-4(ng-controller="location")
+			.row(ng-hide="!invalidZip")
+				.error
+					.alert.alert-danger(role="alert") Zip code must be 5 numbers! #[i (eg: 55555)]
+			.row
+				.col-sm-10.col-sm-offset-1
+					.search
+						.input-group
+							span.input-group-btn
+								button.btn.btn-default(type="button", ng-click="getWeather('geo')") #[i.fa.fa-location-arrow]
+							input.form-control(type="text", ng-model="zipCode", placeholder="ZIP code (US)")
+							span.input-group-btn
+								button.btn.btn-default(type="submit" ng-click="getWeather('zip')") #[i.fa.fa-search]
+
+			.row.loading(ng-hide="!loading")
+				.col-sm-10.col-sm-offset-1
+					p Getting weather data...
+					.progress
+						.progress-bar.progress-bar-striped.active(role="progressbar", aria-valuenow="60", aria-valuemin="0", aria-valuemax="100", style="width: 60%;")
+			.row(ng-hide="!showData")
+				.col-sm-10.col-sm-offset-1
+					.display-weather
+						h2 {{city}}
+						h1 {{temperature}}
+						p {{condition}}
+						.btn-group(role="group")
+							button(ng-class="fahrenheitClass", ng-click="changeUnit('fahrenheit')", type="button") F
+							button(ng-class="celciusClass", ng-click="changeUnit('celcius')", type="button") C
+			.row(ng-hide="!error")
+				.col-sm-10.col-sm-offect-1
+					.display-error
+						h1 Oh no!
+						h2 Something went wrong!
+
+	include ./partials/_weather_footer.jade
