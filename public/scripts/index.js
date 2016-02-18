@@ -1,8 +1,12 @@
 $(document).ready(function(){
+	// Hide work gallery h4 
+	$(".work-gallery-item").find("h4").hide();
+	// When hovering over a picture
 	$('.work-gallery-item').hover(function(){
-		var title = $('img', this).attr("alt");
-		$(this).after("<h4>" + title + "</h4>");
+		// Fade title tag in
+		$(this).find("h4").fadeIn();
 	}, function(){
-		$(".work-gallery-item + h4").remove();
+		// Fade out title tag after hover
+		$(this).find("h4").fadeOut();
 	});
 });
