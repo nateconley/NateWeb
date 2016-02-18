@@ -16,6 +16,7 @@ angular.module('weatherApp', [])
 		$scope.showData = false;
 		$scope.error = false;
 		$scope.invalidZip = false;
+		$scope.noGeolocation = false;
 		// empty location object
 		var location = {}
 		// If requesting zip code
@@ -52,35 +53,39 @@ angular.module('weatherApp', [])
 			}
 		} else if (type == "geo") {
 			// If requesting geoLocation
-			navigator.geolocation.getCurrentPosition(function(position){
-				var location = {};
-				location.latitude = position.coords.latitude;
-				location.longitude = position.coords.longitude;
-				// http post function
-				$http.post('/weather', location).then(function(response){
-					var weatherData = response.data;
-					if (!weatherData.error) {
-						// Success
-						$scope.city = weatherData.city;
-						$scope.temperature = weatherData.temperature + "º " + tempUnit;
-						temp = weatherData.temperature;
-						$scope.condition = weatherData.condition;
-						// Hide Loading Bar and show Data
-						$scope.loading = false;
-						$scope.showData = true;
-					} else {
+			if ("geolocation" in navigator) {		// Check to see if the browser supports geolocation
+				navigator.geolocation.getCurrentPosition(function(position){
+					var location = {};
+					location.latitude = position.coords.latitude;
+					location.longitude = position.coords.longitude;
+					// http post function
+					$http.post('/weather', location).then(function(response){
+						var weatherData = response.data;
+						if (!weatherData.error) {
+							// Success
+							$scope.city = weatherData.city;
+							$scope.temperature = weatherData.temperature + "º " + tempUnit;
+							temp = weatherData.temperature;
+							$scope.condition = weatherData.condition;
+							// Hide Loading Bar and show Data
+							$scope.loading = false;
+							$scope.showData = true;
+						} else {
+							// Failure
+							$scope.error = true;
+							$scope.loading = false;
+							$scope.showData = false;
+						}
+					}, function(){
 						// Failure
 						$scope.error = true;
 						$scope.loading = false;
 						$scope.showData = false;
-					}
-				}, function(){
-					// Failure
-					$scope.error = true;
-					$scope.loading = false;
-					$scope.showData = false;
+					});
 				});
-			});
+			} else {		// If browser doesn't support geolocation
+				$scope.noGeolocation = true;
+			}
 		}
 	}
 
