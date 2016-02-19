@@ -3,7 +3,7 @@ var request = require('request');
 //API call 
 var apiCall = function(location, res) {
 	var url = "http://api.openweathermap.org/data/2.5/weather";
-	var appid = "&units=imperial&appid=6b89f8f900eaa2da365dfe67bda5b1a2";
+	var appid = "&units=imperial&appid=xxxxxxx";
 	
 	if (location.zip) {
 		url += "?zip=" + location.zip + ",us" + appid;
