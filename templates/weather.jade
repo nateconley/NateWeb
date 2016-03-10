@@ -6,40 +6,41 @@ html
 			h1 LocalWeatherApp
 			h2 #[a(href="http://www.nateconley.com/") Back to nateconley.com]
 		.weather-info.col-sm-4.col-sm-offset-4(ng-controller="location")
-			.row(ng-hide="!invalidZip")
-				.error
-					.alert.alert-danger(role="alert") Zip code must be 5 numbers! #[i (eg: 55555)]
-			.row(ng-hide="!noGeolocation")
-				.error
-					.alert.alert-danger(role="alert") Your browser doesn't support geolocation!]
-			.row
-				.col-sm-10.col-sm-offset-1
-					.search
-						.input-group
-							span.input-group-btn
-								button.btn.btn-default(type="button", ng-click="getWeather('geo')") #[i.fa.fa-location-arrow]
-							input.form-control(type="text", ng-model="zipCode", placeholder="ZIP code (US)")
-							span.input-group-btn
-								button.btn.btn-default(type="submit" ng-click="getWeather('zip')") #[i.fa.fa-search]
+			.cloak(ng-cloak)
+				.row(ng-hide="!invalidZip")
+					.error
+						.alert.alert-danger(role="alert") Zip code must be 5 numbers! #[i (eg: 55555)]
+				.row(ng-hide="!noGeolocation")
+					.error
+						.alert.alert-danger(role="alert") Your browser doesn't support geolocation!]
+				.row
+					.col-sm-10.col-sm-offset-1
+						.search
+							.input-group
+								span.input-group-btn
+									button.btn.btn-default(type="button", ng-click="getWeather('geo')") #[i.fa.fa-location-arrow]
+								input.form-control(type="text", ng-model="zipCode", placeholder="ZIP code (US)")
+								span.input-group-btn
+									button.btn.btn-default(type="submit" ng-click="getWeather('zip')") #[i.fa.fa-search]
 
-			.row.loading(ng-hide="!loading")
-				.col-sm-10.col-sm-offset-1
-					p Getting weather data...
-					.progress
-						.progress-bar.progress-bar-striped.active(role="progressbar", aria-valuenow="60", aria-valuemin="0", aria-valuemax="100", style="width: 60%;")
-			.row(ng-hide="!showData")
-				.col-sm-10.col-sm-offset-1
-					.display-weather
-						h2 {{city}}
-						h1 {{temperature}}
-						p {{condition}}
-						.btn-group(role="group")
-							button(ng-class="fahrenheitClass", ng-click="changeUnit('fahrenheit')", type="button") F
-							button(ng-class="celciusClass", ng-click="changeUnit('celcius')", type="button") C
-			.row(ng-hide="!error")
-				.col-sm-10.col-sm-offect-1
-					.display-error
-						h1 Oh no!
-						h2 Something went wrong!
+				.row.loading(ng-hide="!loading")
+					.col-sm-10.col-sm-offset-1
+						p Getting weather data...
+						.progress
+							.progress-bar.progress-bar-striped.active(role="progressbar", aria-valuenow="60", aria-valuemin="0", aria-valuemax="100", style="width: 60%;")
+				.row(ng-hide="!showData")
+					.col-sm-10.col-sm-offset-1
+						.display-weather
+							h2 {{city}}
+							h1 {{temperature}} {{tempUnit}} º
+							p {{condition}}
+							.btn-group(role="group")
+								button(ng-class="{'btn-primary': tempUnit === 'F'}", class="btn" ng-click="changeUnit('F')", type="button") F
+								button(ng-class="{'btn-primary': tempUnit === 'C'}", class="btn" ng-click="changeUnit('C')", type="button") C
+				.row(ng-hide="!error")
+					.col-sm-10.col-sm-offect-1
+						.display-error
+							h1 Oh no!
+							h2 Something went wrong!
 
 	include ./partials/_weather_footer.jade
